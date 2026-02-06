@@ -2,6 +2,7 @@
     curl
     fd
     file
+    fastfetch
     git
     htop
     less

@@ -1,4 +1,5 @@
 { pkgs }: with pkgs; [
+    clang
     clang-tools
     cmake
     gcc

@@ -17,13 +17,14 @@ echo "[*] Changing Repo Name to Nixos"
 mv /home/dbochoa77/nixosConfiguration /home/dbochoa77/nixos
 
 echo "[*] Moving hardware configuration"
-sudo mv /etc/nixos/hardware-configuration.nix ~/nixos/hosts/nixos/
+sudo mv /etc/nixos/hardware-configuration.nix ~/nixos/hosts/
 
 echo "[*] Backing up Legacy Location"
 mkdir -p ~/legacy-nixos
-sudo mv /etc/nixos/ ~/legacy-nixos
+sudo mv /etc/nixos/ ~/nixos/legacy-nixos
 
 echo "[*] Setting up nvim"
+sudo mkdir ~/.config
 mv ~/nixos/nvim ~/.config/
 
 echo "[*] Removing Nixos Legacy Dir"

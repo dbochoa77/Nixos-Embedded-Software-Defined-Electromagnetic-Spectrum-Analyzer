@@ -1,0 +1,47 @@
+environment.systemPackages = with pkgs; [
+  rtl-sdr            # rtl_test, rtl_sdr
+  usbutils           # lsusb
+  python3
+  python3Packages.numpy
+  python3Packages.scipy
+  python3Packages.matplotlib
+  python3Packages.pyrtlsdr
+];
+
+# HARDWARE
+boot.blacklistedKernelModules = [
+  "dvb_usb_rtl28xxu"
+  "rtl2832"
+  "rtl2830"
+];
+
+# RTL_SDR ADMIN
+services.udev.packages = [ pkgs.rtl-sdr ];
+
+# POWER
+boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+
+# AUTO START TMUX
+programs.tmux.enable = true;
+
+if [[ -z "$TMUX" ]]; then
+  exec tmux new -A -s radio
+fi
+
+# FOR BUTTONS 
+environment.systemPackages = with pkgs; [
+  python3Packages.gpiozero
+];
+
+users.users.admin.extraGroups = [ "dialout" "gpio" ];
+
+# TO VERIFY ALL WORKS
+lsusb | grep RTL
+rtl_test -t
+python - <<EOF
+from rtlsdr import RtlSdr
+sdr = RtlSdr()
+print(sdr.sample_rate, sdr.center_freq)
+sdr.close()
+EOF
+
