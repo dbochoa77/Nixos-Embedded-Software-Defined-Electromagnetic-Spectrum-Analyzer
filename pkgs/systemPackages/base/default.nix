@@ -1,0 +1,16 @@
+{ pkgs }: with pkgs; [
+    curl
+    fd
+    file
+    git
+    htop
+    less
+    neovim
+    p7zip
+    ripgrep
+    tmux
+    unzip
+    util-linux
+    wget
+    which
+]

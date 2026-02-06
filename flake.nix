@@ -16,7 +16,6 @@ inputs = {
    };
   outputs = { 
 	self, 
-        #agenix,
 	disko,
 	home-manager,
 	nixpkgs,
@@ -30,9 +29,11 @@ inputs = {
       forAllSystems = nixpkgs.lib.genAttrs systems;  
 
     in {
-    #packages =
-    #  forAllSystems (system: import ./pkgs { pkgs = nixpkgs.legacyPackages.${system}; }
-    #);
+      packages = forAllSystems (system: 
+	import ./pkgs { 
+	  pkgs = nixpkgs.legacyPackages.${system}; 
+	}
+      );
 
     overlays = import ./overlays {inherit inputs;};
 
@@ -40,20 +41,16 @@ inputs = {
         nixos = nixpkgs.lib.nixosSystem {
 	  specialArgs = {inherit inputs outputs;};
 	  modules = [./hosts/nixos/default.nix
-	    #./hosts/nixos/hardware-configuration.nix
 		     inputs.disko.nixosModules.disko
 	  ];
 	};
       };
-      #agenix.nixosModules.default
-      #./hosts/nixos/configuration.nix was removed, working on fixing podman
-
-      homeConfigurations = { 
-        "nixos" = home-manager.lib.homeManagerConfiguration {
-	  pkgs = nixpkgs.legacyPackages."x86_64-linux";
-	  extraSpecialArgs = {inherit inputs outputs;};
-	  modules = [./home/nixos/admin.nix];
-	};
-      };
+      #homeConfigurations = { 
+      #  "nixos" = home-manager.lib.homeManagerConfiguration {
+      #    pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      #    extraSpecialArgs = {inherit inputs outputs;};
+      #    modules = [./home/nixos/admin.nix];
+      #  };
+      #};
     };
 } 

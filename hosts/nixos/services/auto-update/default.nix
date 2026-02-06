@@ -2,10 +2,10 @@
 
 {
   system.autoUpgrade = {
-    enable = true;
+    enable = false;
 
     # Point to your flake (use a string ref). Include the host attr if you want.
-    flake = "/home/admin/Homelab/nixosBase#nixos";
+    flake = "/home/admin/nixos#nixos";
 
     # nixos-rebuild flags:
     flags = [

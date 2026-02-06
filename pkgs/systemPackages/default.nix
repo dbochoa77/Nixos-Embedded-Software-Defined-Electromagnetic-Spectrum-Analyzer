@@ -1,8 +1,16 @@
-{ pkgs }: 
-( import ./developerTools { inherit pkgs; })
+{ pkgs }:
+
+( import ./admin { inherit pkgs; } )
 ++
-( import ./nixos-tools { inherit pkgs; })
+( import ./base { inherit pkgs; } )
 ++
-( import ./security { inherit pkgs; })
+( import ./hardware { inherit pkgs; } )
 ++
-( import ./utilities{ inherit pkgs; })
+( import ./networking { inherit pkgs; } )
+++
+( import ./nixos-admin { inherit pkgs; } )
+++
+( import ./security { inherit pkgs; } )
+++
+( import ./storage { inherit pkgs; } )
+

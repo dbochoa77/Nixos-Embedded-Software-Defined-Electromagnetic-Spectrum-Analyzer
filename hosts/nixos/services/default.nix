@@ -1,7 +1,7 @@
 {
   imports = [
+    ./auto-update/default.nix
     ./boot/default.nix
-    ./containers/default.nix
     ./flakes/default.nix
     ./hostname/default.nix
     ./internationisationProps/default.nix

@@ -2,5 +2,5 @@
 
 { 
   home-manager.users.admin =
-    import ../../../home/admin/default.nix;
+    import ../../../home/nixos/admin.nix;
  }
