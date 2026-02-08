@@ -6,7 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    inputs.disko = {
+    disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -41,7 +41,6 @@
 	                ];
 	    };
     };
-
     homeConfigurations = { 
       "nixos" = home-manager.lib.homeManagerConfiguration {
 	      pkgs = nixpkgs.legacyPackages."x86_64-linux";

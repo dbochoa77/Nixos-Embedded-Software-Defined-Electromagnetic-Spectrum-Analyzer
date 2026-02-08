@@ -1,13 +1,3 @@
-environment.systemPackages = with pkgs; [
-  rtl-sdr            # rtl_test, rtl_sdr
-  usbutils           # lsusb
-  python3
-  python3Packages.numpy
-  python3Packages.scipy
-  python3Packages.matplotlib
-  python3Packages.pyrtlsdr
-];
-
 # HARDWARE
 boot.blacklistedKernelModules = [
   "dvb_usb_rtl28xxu"

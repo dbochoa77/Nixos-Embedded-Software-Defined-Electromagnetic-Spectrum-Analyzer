@@ -7,6 +7,7 @@
     htop
     less
     neovim
+    nodejs_24
     p7zip
     ripgrep
     tmux

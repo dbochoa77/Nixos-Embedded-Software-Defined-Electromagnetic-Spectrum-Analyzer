@@ -3,6 +3,7 @@
     ./auto-update/default.nix
     ./boot/default.nix
     ./flakes/default.nix
+    ./firmware/default.nix
     ./hostname/default.nix
     ./internationisationProps/default.nix
     ./keymaps/default.nix
