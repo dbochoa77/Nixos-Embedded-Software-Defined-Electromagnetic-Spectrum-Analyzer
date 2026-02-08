@@ -1,4 +1,6 @@
 { pkgs }: with pkgs; [
+    lua-language-server
+    pyright
     curl
     fd
     file
