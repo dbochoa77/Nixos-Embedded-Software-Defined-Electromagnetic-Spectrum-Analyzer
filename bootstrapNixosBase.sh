@@ -3,29 +3,21 @@
 set -e
 
 echo "[*] Partioning with Disko" 
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount ~/Homelab/nixosBase/disk-config.nix
-
-echo "[*] Cleaning system for Nixos Installation" 
-sudo nix-collect-garbage -d && sudo nix store gc --extra-experimental-features "nix-command" && sudo nix store optimise
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount ~/nixos/hosts/nixos/disko-config.nix
 
 echo "[*] Installing Nixos "
 mkdir -p /mnt/Flakes/tmp 
-cd  ~/Homelab/nixosBase
-sudo TMPDIR = /mnt/Flake/tmp nixos-install --flake .#nixos
+sudo TMPDIR=/mnt/Flake/tmp nixos-install --flake .#nixos
 
 echo "[*] Changing Repo Name to Nixos"
-mv /home/dbochoa77/nixosConfiguration /home/dbochoa77/nixos
+mv ~/Nixos-Embedded-Software-Defined-Electromagnetic-Spectrum-Analyzer ~/nixos
 
 echo "[*] Moving hardware configuration"
-sudo mv /etc/nixos/hardware-configuration.nix ~/nixos/hosts/
+sudo mv /etc/nixos/hardware-configuration.nix ~/nixos/hosts/nixos/
 
 echo "[*] Backing up Legacy Location"
 mkdir -p ~/legacy-nixos
-sudo mv /etc/nixos/ ~/nixos/legacy-nixos
-
-echo "[*] Setting up nvim"
-sudo mkdir ~/.config
-mv ~/nixos/nvim ~/.config/
+sudo mv /etc/nixos/ ~/legacy-nixos
 
 echo "[*] Removing Nixos Legacy Dir"
 sudo rm -fr /etc/nixos
@@ -41,3 +33,4 @@ home-manager switch --flake .#nixos
 
 echo "[*] Removing Bootstrap.sh, Thank you !!"
 rm ~/nixos/bootstrap.sh
+
