@@ -2,6 +2,7 @@
     clang
     clang-tools
     cmake
+    eza
     gcc
     gdb
     glslang
