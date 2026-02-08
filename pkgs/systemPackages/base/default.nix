@@ -17,4 +17,5 @@
     util-linux
     wget
     which
+    xclip
 ]
