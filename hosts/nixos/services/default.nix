@@ -1,5 +1,6 @@
 {
   imports = [
+    ./auto-start/default.nix
     ./auto-update/default.nix
     ./boot/default.nix
     ./flakes/default.nix
