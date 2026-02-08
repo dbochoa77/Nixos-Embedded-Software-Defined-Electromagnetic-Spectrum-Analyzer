@@ -6,7 +6,7 @@ echo "[*] Partioning with Disko"
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount ~/nixos/hosts/nixos/disko-config.nix
 
 echo "[*] Installing Nixos "
-mkdir -p /mnt/Flakes/tmp 
+mkdir -p /mnt/Flake/tmp 
 sudo TMPDIR=/mnt/Flake/tmp nixos-install --flake .#nixos
 
 echo "[*] Changing Repo Name to Nixos"
