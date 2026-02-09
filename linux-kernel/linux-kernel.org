@@ -1,0 +1,36 @@
+* Purpose
+Learn linux kernel on arm systems
+
+* Installation 
+** Install tools for Devolpment
+#+begin_src bash
+nix shell nixpkgs#git nixpkgs#bc nixpkgs#bison nixpkgs#flex nixpkgs#openssl \
+         nixpkgs#gnumake nixpkgs#pkg-config nixpkgs#ncurse
+#+end_src
+
+** Clone Raspberrypi Kernel
+#+begin_src bash
+git clone --depth=1 https://github.com/raspberrypi/linux
+cd linux
+#+end_src
+
+** Load Pi 4 default config
+#+begin_src bash
+export ARCH=arm64
+export KERNEL=kernel8
+make bcm2711_defconfig
+#+end_src
+
+** Modify the Linux Kernel 
+#+begin_src bash
+make menuconfig
+#+end_src
+
+** Build
+#+begin_src bash
+make -j6 Image.gz modules dtbs
+#+end_src
+
+** Resources
+- https://wiki.nixos.org/wiki/Linux_kernel
+
