@@ -1,0 +1,99 @@
+* GOAL
+Build, deploy, and document a headless NixOS-based SDR electromagnetic spectrum analyzer suitable for a 4+ page Physics 4B research paper.
+
+* WEEK 1 — System Stability & Infrastructure
+** TODO Fix flake.nix syntax and evaluation
+   DEADLINE: <2026-03-01>
+   - [X] Remove duplicate imports (hardware, disko, services)
+   - [X] Ensure single source of truth for fileSystems (Disko)
+   - [X] nix flake check passes
+
+** TODO Achieve clean NixOS rebuild
+   DEADLINE: <2026-03-03>
+   - [X] nixos-rebuild dry-run succeeds
+   - [X] nixos-rebuild switch succeeds
+   - [X] No Disko or filesystem conflicts
+
+** TODO Lock GitHub SSH workflow
+   DEADLINE: <2026-03-04>
+   - [X] SSH key added to GitHub
+   - [X] Repo remote uses git@github.com
+   - [X] Push succeeds without username/password
+
+** TODO Create baseline tmux + headless workflow
+   DEADLINE: <2026-03-05>
+   - [X] tmux auto-start on TTY login
+   - [X] SSH attaches to existing tmux session
+   - [X] Reboot persistence verified
+
+* WEEK 2 — SDR Hardware & Software Bring-Up
+** TODO Verify RTL-SDR hardware detection
+   DEADLINE: <2026-03-08>
+   - [X] rtl_test -t passes
+   - [X] lsusb shows RTL device
+   - [ ] udev permissions verified
+
+** TODO Blacklist DVB kernel modules
+   DEADLINE: <2026-03-09>
+   - [ ] dvb_usb_rtl28xxu blacklisted
+   - [ ] rtl2832 not auto-loaded
+   - [ ] SDR works without root
+
+** TODO Write minimal Python SDR capture script
+   DEADLINE: <2026-03-11>
+   - [ ] Use pyrtlsdr
+   - [ ] Capture IQ samples
+   - [ ] FFT with numpy
+   - [ ] Save power spectrum to file
+
+** TODO Validate frequency ranges & resolution
+   DEADLINE: <2026-03-12>
+   - [ ] Test FM band
+   - [ ] Test ISM band (433 / 915 MHz)
+   - [ ] Log center freq, bandwidth, sample rate
+
+* WEEK 3 — Embedded + Physics Depth
+** TODO Implement continuous scanning loop
+   DEADLINE: <2026-03-15>
+   - [ ] Frequency sweep logic
+   - [ ] Time-domain vs frequency-domain comparison
+   - [ ] Timestamped data output
+   - [ ] Draft Skeleton
+
+** TODO Add physics instrumentation metrics
+   DEADLINE: <2026-03-17>
+   - [ ] Frequency resolution (Δf)
+   - [ ] Nyquist explanation
+   - [ ] Noise floor measurement
+   - [ ] Aliasing demonstration
+
+** TODO Create plots for paper
+   DEADLINE: <2026-03-18>
+   - [ ] FFT magnitude plots
+   - [ ] Signal vs noise visualization
+   - [ ] Annotated spectrum figures
+
+** TODO Freeze system configuration
+   DEADLINE: <2026-03-19>
+   - [ ] No more flake changes
+   - [ ] Pin nixpkgs revision
+   - [ ] Document system reproducibility
+
+* WEEK 4 — Paper, Polish, & Submission
+** TODO Write paper outline in Org/LaTeX
+   DEADLINE: <2026-03-21>
+   - [ ] Abstract
+   - [ ] Introduction (EM theory)
+   - [ ] System architecture
+   - [ ] Experimental results
+   - [ ] Discussion & limitations
+
+* Why Nixos? 
+Nixos is a declarative Linux Operating System, that could be tailored to have this build be easily reproducable on any system. Due to it being the main operating system I use, along with the lightweightness of it, I prefer it. 
+
+* Installation 
+
+* BOM
+
+* Programs Used
+
