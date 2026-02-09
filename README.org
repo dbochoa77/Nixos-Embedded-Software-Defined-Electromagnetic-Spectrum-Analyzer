@@ -89,11 +89,34 @@ Build, deploy, and document a headless NixOS-based SDR electromagnetic spectrum 
    - [ ] Discussion & limitations
 
 * Why Nixos? 
-Nixos is a declarative Linux Operating System, that could be tailored to have this build be easily reproducable on any system. Due to it being the main operating system I use, along with the lightweightness of it, I prefer it. 
+Nixos is a declarative Linux Operating System, that could be tailored to have this build be easily reproducable on any system. Due to it being the main operating system I use, along with the lightweightness of it, I prefer it. Nixos is using flakes and home-manager. 
 
-* Installation 
+* Nixos Installation 
+** Get Arm Image
+[[https://hydra.nixos.org/job/nixos/release-25.05/nixos.sd_image.aarch64-linux][Hydra Nixos]]
 
-* BOM
+** Set Root passwd
+#+begin_src
+passwd 
+#+end_src
+
+** Install Tools for rebuild
+#+begin_src
+nix-shell -p git vim 
+#+end_src
+
+** Move Hardware in Right Location
+#+begin_src
+sudo mv /etc/nixos/hardware-configuration.nix ~/nixos/hosts/nixos
+#+end_src
+
+** Rebuild System
+#+begin_src
+cd ~/nixos && sudo nixos-rebuild switch --flake .#nixos && home-manager switch --flake .#nixos
+#+end_src
+
+* Bill of Material
 
 * Programs Used
 
+* NESDEMSAv1.0
