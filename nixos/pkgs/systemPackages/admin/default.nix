@@ -1,0 +1,26 @@
+{ pkgs }: with pkgs; [
+    clang
+    clang-tools
+    cmake
+    eza
+    gcc
+    gdb
+    glslang
+    gnumake
+    gnutls
+    graphviz
+    libtool
+    lm_sensors
+    lsof
+    ninja
+    pciutils
+    pkg-config
+    poppler-utils
+    powertop
+    smartmontools
+    strace
+    sutils 
+    tree
+    usbutils 
+    xdg-utils
+]
